@@ -1,0 +1,11 @@
+<?php
+use Mezzio\Swoole\ConfigProvider;
+
+return array_merge((new ConfigProvider())(), [
+    'mezzio-swoole' => [
+        'swoole-http-server' => [
+            'host' => 'insert hostname to use here',
+            'port' => 8080, // use an integer value here
+        ],
+    ],
+]);
