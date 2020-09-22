@@ -68,6 +68,37 @@ You can then browse to http://localhost:8080.
 > $ composer run --timeout=86400 serve
 > ```
 
+## Swoole
+
+To run this project using Swoole, just run this command
+
+```bash
+vendor/bin/mezzio-swoole start
+```
+
+You can then browse to http://localhost:8080.
+
+The Swoole configuration file is on `config/autoload/swoole.local.php.dist`.
+
+```php
+<?php
+use Mezzio\Swoole\ConfigProvider;
+
+return array_merge((new ConfigProvider())(), [
+    'mezzio-swoole' => [
+        'swoole-http-server' => [
+            'host' => 'insert hostname to use here',
+            'port' => 8080, // use an integer value here
+        ],
+    ],
+]);
+```
+
+Then rename this file to `config/autoload/swoole.local.php`
+
+For production site, you can set Proxy from Web Server to this Swoole
+
+
 ## Troubleshooting
 
 If the installer fails during the ``composer create-project`` phase, please go
